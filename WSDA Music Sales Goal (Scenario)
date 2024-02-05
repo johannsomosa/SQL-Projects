@@ -22,9 +22,9 @@ SELECT
 	WHEN total BETWEEN 7.00 AND 15.00 THEN 'Target Purchase'
 	ELSE 'Top Performer'
 	END AS PurchaseType
-From 
+FROM 
 Invoice
 WHERE
 PurchaseType ='Top Performer'
-Order by
+ORDER BY
 BillingCity
