@@ -28,3 +28,29 @@ WHERE
 PurchaseType ='Top Performer'
 ORDER BY
 BillingCity
+
+
+-- What employees are responsible for the 10 highest sales?
+SELECT
+	e.FirstName,
+	e.LastName,
+	e.EmployeeId,
+	c.FirstName,
+	c.Lastname,
+	i.InvoiceId,
+	i.CustomerId,
+	i.total
+From 
+Invoice AS i
+INNER JOIN
+Customer AS c
+ON
+i.CustomerId = c.CustomerId
+INNER JOIN
+employee as e
+ON
+ c.SupportRepId = e.employeeid
+ORDER BY
+i.total DESC
+LIMIT
+10
