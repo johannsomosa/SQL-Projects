@@ -54,3 +54,25 @@ ORDER BY
 i.total DESC
 LIMIT
 10
+
+
+-- Create a view that displays each customer's support representatitve
+CREATE VIEW V_Customer_EmployeeRep AS
+SELECT
+	c.CustomerId,
+	c.FirstName||' '||c.LastName AS [Customer Name],
+	c.Company,
+	c.Address||' '||c.City || ','||c.State|| ',' ||c.Country||','||c.PostalCode AS [Address],
+	c.Phone,
+	c.Email,
+	c.SupportRepId,
+	e.EmployeeId,
+	e.FirstName || ' ' || e.LastName AS [Employee Name],
+	e.Title,
+	e.ReportsTo
+FROM
+	Customer as c
+INNER JOIN
+	Employee as e
+ON
+	c.SupportRepId = e.EmployeeId
